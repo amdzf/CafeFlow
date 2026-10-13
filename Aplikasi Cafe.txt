@@ -1,0 +1,62 @@
+Aplikasi CafeFlow POS saat ini sudah aktif berjalan di komputer Anda!
+
+Anda bisa langsung mencobanya sekarang melalui browser dengan mengikuti langkah-langkah mudah berikut:
+
+1. Buka di Browser Anda
+Buka Google Chrome, Microsoft Edge, atau browser pilihan Anda, lalu klik atau kunjungi tautan berikut:
+
+👉 http://localhost:8000 (atau http://127.0.0.1:8000)
+
+2. Masuk / Login (Tersedia Tombol 1-Klik)
+Di halaman login, Anda dapat mengetik manual atau cukup klik salah satu tombol demo di bawah formulir:
+
+👑 Sebagai Admin / Owner:
+Email: admin@cafeflow.com
+Password: admin123
+(Akses seluruh fitur: Dashboard omzet & laba rugi, manajemen produk & resep, laporan keuangan, pengeluaran, staf, dan pengaturan)
+🧾 Sebagai Kasir:
+Email: kasir@cafeflow.com
+Password: kasir123
+(Akses langsung ke mesin Kasir POS, keranjang pesanan, pembayaran tunai/QRIS, dan cetak struk)
+☕ Sebagai Barista / Dapur:
+Email: dapur@cafeflow.com
+Password: dapur123
+(Akses ke Kitchen Display System / KDS live)
+3. Skenario Menarik yang Bisa Anda Coba
+A. Mencoba Transaksi Kasir (POS)
+Buka menu Kasir (POS) di sidebar atau klik tombol "Buka POS" di bagian atas navbar.
+Klik beberapa kartu menu (misal: Kopi Susu Gula Aren, Truffle French Fries). Menu akan masuk ke keranjang di sisi kanan.
+Anda bisa menambah/mengurangi jumlah, memberi diskon, atau menambahkan catatan (misal: "Less sugar").
+Pilih opsi Dine-In dan pilih nomor meja (misal: Meja Indoor 01).
+B. Menguji Pembayaran Tunai (Cash)
+Klik tombol hijau TUNAI.
+Klik tombol nominal cepat 100.000 → sistem otomatis menghitung uang kembalian.
+Klik Proses & Konfirmasi Bayar.
+Pembayaran langsung lunas, stok bahan baku berkurang otomatis di database, dan pratinjau struk thermal 58mm/80mm langsung terbuka siap dicetak.
+C. Menguji Pembayaran QRIS Dinamis & Simulator
+Masukkan menu lagi ke keranjang di halaman POS, lalu klik tombol biru QRIS.
+Modal QRIS akan terbuka menampilkan Dynamic QR Code, total tagihan, nomor transaksi, dan hitung mundur 15 menit.
+Di dalam modal terdapat kotak Sandbox Developer Tool:
+Klik tombol "Simulasi Bayar Sukses".
+Webhook payment gateway akan memverifikasi signature resmi secara otomatis.
+Dalam 3 detik, status di layar otomatis berubah menjadi centang hijau LUNAS (PAID) dan tombol cetak struk akan aktif.
+D. Memantau Pesanan di Layar Dapur (KDS)
+Buka menu Dapur & Bar (KDS) atau akses http://localhost:8000/kitchen.
+Pesanan yang tadi dibayar kasir akan tampil secara real-time tanpa perlu reload halaman.
+Tim dapur dapat mengklik:
+Mulai Buat → status berubah menjadi Diproses
+Siap Disajikan → status berubah menjadi Siap Saji
+Selesaikan → pesanan selesai dan meja otomatis dikosongkan.
+E. Melihat Laporan Finansial & Laba Rugi
+Buka menu Dashboard Utama untuk melihat grafik Chart.js dan omzet harian.
+Buka menu Laporan Penjualan (dapat di-ekspor ke CSV / Excel atau cetak PDF).
+Buka menu Laporan Laba Rugi (P&L) untuk melihat rincian: $$\text{Penjualan Bersih} - \text{HPP (Modal Bahan)} - \text{Pengeluaran Operasional} = \text{Laba Bersih}$$
+📌 Catatan Jika Ingin Menjalankan Ulang Server di Lain Waktu
+Jika suatu saat Anda me-restart komputer atau menutup terminal, cukup jalankan perintah berikut di PowerShell:
+
+powershell
+# 1. Masuk ke direktori proyek
+cd "C:\Users\ROG STRIX\penjualan_cafe"
+# 2. Jalankan server lokal
+& "C:\xampp\php\php.exe" -S 127.0.0.1:8000 -t public
+Lalu buka kembali http://localhost:8000

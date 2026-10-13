@@ -1,0 +1,549 @@
+/* ==========================================================
+   CafeFlow POS - Modern Cafe Theme
+   Warm cream, rich coffee brown, white, and emerald green accents
+   ========================================================== */
+
+:root {
+    --cafe-bg: #FBF8F3;
+    --cafe-surface: #FFFFFF;
+    --cafe-primary: #4A2E18;
+    --cafe-primary-hover: #37200F;
+    --cafe-primary-light: #F4EBE2;
+    --cafe-secondary: #C67C4E;
+    --cafe-secondary-hover: #B0693B;
+    --cafe-secondary-light: #FDF5ED;
+    --cafe-dark: #20130B;
+    --cafe-muted: #78716C;
+    --cafe-border: #EAE3D9;
+    --cafe-border-light: #F2ECE4;
+    --cafe-accent: #10B981;
+    --cafe-accent-hover: #059669;
+    --cafe-accent-light: #ECFDF5;
+    --cafe-danger: #EF4444;
+    --cafe-warning: #F59E0B;
+    --cafe-info: #0EA5E9;
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 72px;
+    --navbar-height: 70px;
+    --card-radius: 16px;
+    --btn-radius: 10px;
+    --shadow-sm: 0 2px 4px rgba(74, 46, 24, 0.04);
+    --shadow-md: 0 6px 18px rgba(74, 46, 24, 0.07);
+    --shadow-lg: 0 12px 28px rgba(74, 46, 24, 0.12);
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--cafe-bg);
+    color: var(--cafe-dark);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Base Layout */
+.app-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.app-sidebar {
+    width: var(--sidebar-width);
+    background-color: #2D1B12;
+    color: #FBF8F3;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.sidebar-header {
+    height: var(--navbar-height);
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.sidebar-brand .brand-icon {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, var(--cafe-secondary), #8A4F2A);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(198, 124, 78, 0.4);
+}
+
+.sidebar-menu {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.25rem 0.85rem;
+    list-style: none;
+    margin: 0;
+}
+
+.sidebar-category {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.45);
+    padding: 0.8rem 0.85rem 0.4rem;
+}
+
+.sidebar-item {
+    margin-bottom: 0.3rem;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.92rem;
+    transition: all 0.2s ease;
+}
+
+.sidebar-link i {
+    font-size: 1.2rem;
+    transition: transform 0.2s ease;
+}
+
+.sidebar-link:hover {
+    color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.09);
+    transform: translateX(3px);
+}
+
+.sidebar-link.active {
+    color: #FFFFFF;
+    background: linear-gradient(90deg, var(--cafe-secondary), #D98C5D);
+    box-shadow: 0 4px 14px rgba(198, 124, 78, 0.35);
+}
+
+.sidebar-link .badge {
+    margin-left: auto;
+}
+
+.sidebar-footer {
+    padding: 1rem 1.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Main Content Area */
+.app-main {
+    margin-left: var(--sidebar-width);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    transition: all 0.3s ease;
+}
+
+/* Navbar */
+.app-navbar {
+    height: var(--navbar-height);
+    background-color: var(--cafe-surface);
+    border-bottom: 1px solid var(--cafe-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    box-shadow: var(--shadow-sm);
+}
+
+.navbar-user-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: none;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.navbar-user-btn:hover {
+    background-color: var(--cafe-primary-light);
+}
+
+.user-avatar-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--cafe-primary), var(--cafe-secondary));
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+/* Content Container */
+.app-content {
+    padding: 2rem;
+    flex: 1;
+}
+
+/* Custom Cards */
+.card-cafe {
+    background-color: var(--cafe-surface);
+    border-radius: var(--card-radius);
+    border: 1px solid var(--cafe-border);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-cafe:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.card-cafe-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--cafe-border-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-cafe-body {
+    padding: 1.5rem;
+}
+
+/* Stat Cards */
+.stat-card {
+    padding: 1.4rem;
+    border-radius: var(--card-radius);
+    background: var(--cafe-surface);
+    border: 1px solid var(--cafe-border);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.stat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+}
+
+.stat-icon.brown {
+    background-color: var(--cafe-primary-light);
+    color: var(--cafe-primary);
+}
+
+.stat-icon.caramel {
+    background-color: var(--cafe-secondary-light);
+    color: var(--cafe-secondary);
+}
+
+.stat-icon.green {
+    background-color: var(--cafe-accent-light);
+    color: var(--cafe-accent);
+}
+
+.stat-icon.blue {
+    background-color: #E0F2FE;
+    color: #0284C7;
+}
+
+.stat-icon.red {
+    background-color: #FEE2E2;
+    color: #DC2626;
+}
+
+.stat-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--cafe-muted);
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cafe-dark);
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* POS Screen Styles */
+.pos-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    height: calc(100vh - var(--navbar-height) - 4rem);
+}
+
+.pos-catalog {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.pos-cart-panel {
+    width: 420px;
+    background: var(--cafe-surface);
+    border-radius: var(--card-radius);
+    border: 1px solid var(--cafe-border);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+}
+
+.pos-product-card {
+    background: var(--cafe-surface);
+    border-radius: 14px;
+    border: 1px solid var(--cafe-border);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.pos-product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--cafe-secondary);
+}
+
+.pos-product-img {
+    height: 130px;
+    object-fit: cover;
+    width: 100%;
+    background-color: var(--cafe-primary-light);
+}
+
+.pos-product-body {
+    padding: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.pos-product-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--cafe-dark);
+}
+
+.pos-product-price {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--cafe-secondary);
+}
+
+/* Category Filter Pills */
+.category-pill {
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--cafe-muted);
+    background-color: var(--cafe-surface);
+    border: 1px solid var(--cafe-border);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.category-pill:hover {
+    color: var(--cafe-primary);
+    border-color: var(--cafe-secondary);
+}
+
+.category-pill.active {
+    background: var(--cafe-primary);
+    color: #FFFFFF;
+    border-color: var(--cafe-primary);
+    box-shadow: 0 4px 10px rgba(74, 46, 24, 0.25);
+}
+
+/* Cart Items */
+.cart-items-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.cart-item-card {
+    background: var(--cafe-bg);
+    border-radius: 12px;
+    padding: 0.85rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid var(--cafe-border);
+}
+
+/* Buttons */
+.btn-cafe {
+    background-color: var(--cafe-primary);
+    color: #FFFFFF;
+    font-weight: 600;
+    border-radius: var(--btn-radius);
+    padding: 0.6rem 1.25rem;
+    border: none;
+    transition: all 0.2s;
+}
+
+.btn-cafe:hover {
+    background-color: var(--cafe-primary-hover);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(74, 46, 24, 0.2);
+}
+
+.btn-caramel {
+    background-color: var(--cafe-secondary);
+    color: #FFFFFF;
+    font-weight: 600;
+    border-radius: var(--btn-radius);
+    padding: 0.6rem 1.25rem;
+    border: none;
+    transition: all 0.2s;
+}
+
+.btn-caramel:hover {
+    background-color: var(--cafe-secondary-hover);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(198, 124, 78, 0.3);
+}
+
+.btn-qris {
+    background: linear-gradient(135deg, #0284C7, #0369A1);
+    color: #FFFFFF;
+    font-weight: 600;
+    border-radius: var(--btn-radius);
+    padding: 0.75rem 1.25rem;
+    border: none;
+}
+
+.btn-qris:hover {
+    background: linear-gradient(135deg, #0369A1, #075985);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+.btn-cash {
+    background: linear-gradient(135deg, #10B981, #059669);
+    color: #FFFFFF;
+    font-weight: 600;
+    border-radius: var(--btn-radius);
+    padding: 0.75rem 1.25rem;
+    border: none;
+}
+
+.btn-cash:hover {
+    background: linear-gradient(135deg, #059669, #047857);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Quick Cash Pill Buttons */
+.btn-quick-cash {
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 1px solid var(--cafe-border);
+    background: #FFFFFF;
+    color: var(--cafe-dark);
+    padding: 0.4rem 0.75rem;
+    transition: all 0.15s;
+}
+
+.btn-quick-cash:hover {
+    background: var(--cafe-secondary-light);
+    border-color: var(--cafe-secondary);
+    color: var(--cafe-secondary);
+}
+
+/* Kitchen Orders Board (KDS) */
+.kds-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
+}
+
+.kds-card {
+    background: #FFFFFF;
+    border-radius: 14px;
+    border: 1px solid var(--cafe-border);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.kds-card.status-pending {
+    border-top: 5px solid var(--cafe-warning);
+}
+
+.kds-card.status-processing {
+    border-top: 5px solid var(--cafe-info);
+}
+
+.kds-card.status-ready {
+    border-top: 5px solid var(--cafe-accent);
+}
+
+/* Responsive tweaks */
+@media (max-width: 992px) {
+    .app-sidebar {
+        transform: translateX(-100%);
+    }
+    .app-sidebar.show {
+        transform: translateX(0);
+    }
+    .app-main {
+        margin-left: 0;
+    }
+    .pos-wrapper {
+        flex-direction: column;
+        height: auto;
+    }
+    .pos-cart-panel {
+        width: 100%;
+    }
+}
